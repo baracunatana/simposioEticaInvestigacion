@@ -76,7 +76,7 @@ Tipos de colaboración [cite:@Harfouche2023]
 
 ** Errores y alucinaciones
 #+attr_html: :height 600 
-[[file:../../media/Retos/2025-06-04_15-38-58_screenshot.png]]
+[[file:2025-06-04_15-38-58_screenshot.png]]
 
 ** Malas interpretaciones
 #+attr_html: :height 600 
