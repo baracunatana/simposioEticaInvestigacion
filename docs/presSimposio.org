@@ -1,0 +1,150 @@
+#+title: Evaluación de formatos de consentimiento informado con IA generativa 
+#+author: Jose Manuel Rodríguez, Laura Valentina Ovalle, Michael Joel González, María Paula Cardona, Juan Erasmo Gómez-Morantes, PhD
+
+# Configuración básica
+#+reveal_root: https://cdn.jsdelivr.net/gh/hakimel/reveal.js@4.1.2/
+#+reveal_version: 4
+#+reveal_hlevel: 2
+#+language: es
+#+reveal_theme: white 
+#+options: toc:nil num:nil reveal_width:1600 reveal_height:900 reveal_margin:0.1 reveal_minScale:0.2 reveal_maxScale:2.5 reveal_transition:'cube' reveal_history:true date:nil reveal_embed_local_resources:t
+#+reveal_extra_css: https://cdn.jsdelivr.net/gh/baracunatana/re-reveal-estilos/j-oer-re-reveal.css
+#+reveal_extra_css: puj.css
+#+REVEAL_TITLE_SLIDE: <section class="title-slide">                <div class="title-left"><img src="logo_puj.png" alt="Pontificia Universidad Javeriana"></div><div class="title-right"><h1>%t</h1><h2>%a</h2><p>%d</p></div></section>
+
+#+bibliography: ~/biblioteca/main.bib
+
+* Contexto
++ Revisión de ~200 protocolos al año. En su mayoría incluyen FCI
++ Revisión manual por parte de una persona
++ Múltiples rondas de corrección de documento
+
+* Contexto - Validación de FCI
+Verificación de 18 características. Algunos ejemplos:
+
++ ¿Contiene versión y fecha del FCI?
++ ¿Describe la justificación y los objetivos de la investigación. Problema, pertinencia del estudio, objetivo general?
++ ¿Indica los procedimientos alternativos  que  pudieran  ser ventajosos?
+
+* Propuesta de Integración de IA
+Sistema de información con dos tipos de usuario base:
++ Investigadores (crean FCI)
++ Evaluadores (verifican FCI)
+
+El sistema gestiona todo el proceso de creación y revisión de FCI de punta a punta.
+
+* Propuesta de Integración de IA
+[[file:ArquitecturaAltoNivel.jpg]]
+
+* Retos
++ Errores y alucinaciones
++ Malas interpretaciones
++ Dependencia
++ Otros factores
+
+** Errores y alucinaciones
+#+attr_html: :style font-size: 50%;
+| Preguntas  | Gemeni 2.0-flash | Deepseek R1-70b | Gemeni 2.0-flash-001 | Llama 4 | Resultado Esperado |
+|------------+------------------+-----------------+----------------------+---------+--------------------|
+| Q1         | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q2         | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q3         | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q4         | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q5         | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q6         | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q7.1       | ✅               | ❌              | ✅                   | ✅      | ✅                 |
+| Q7.2       | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q7.3       | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q7.4       | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q7.5       | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q7.6       | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q7.7       | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q8         | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q9         | ❌               | ❌              | ❌                   | ❌      | ❌                 |
+| Q10        | ❌               | ❌              | ❌                   | ✅      | ❌                 |
+| Q11        | ✅               | ✅              | ✅                   | ✅      | ✅                 |
+| Q12        | ❌               | ✅              | ❌                   | ✅      | ✅                 |
+|------------+------------------+-----------------+----------------------+---------+--------------------|
+| % De exito | 94.44%           | 94.44%          | 94.44%               | 94.44%  | 100.00%            |
+
+** Errores y alucinaciones
+Tipos de colaboración [cite:@Harfouche2023]
++ Delegación completa: Humano > IA
++ Toma de decisión híbrida: IA > Humano
++ Toma de decisión híbrida: Humano > IA 
++ Toma de decisión agregada
+
+** Errores y alucinaciones
+#+attr_html: :height 600 
+[[file:../../media/Retos/2025-06-04_15-38-58_screenshot.png]]
+
+** Malas interpretaciones
+#+attr_html: :height 600 
+[[file:pudin.png]]
+** IA escribe, IA revisa, IA firma
+Ciclos de retroalimentación en donde el FCI es escrito por IA, es revisado por IA, y es leído por IA. 
+
+** Dependencia 
+#+begin_quote
+The findings revealed a significant negative correlation between frequent AI tool usage and critical thinking abilities, mediated by increased cognitive offloading. 
+#+end_quote
+
+#+begin_colde
+#+attr_html: :style font-size: 60%;
+Gerlich (20253). AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking, Societies. doi:10.3390/soc15010006
+#+end_colde
+
+** Otros factores
++ Confidencialidad
++ Ajustes maliciosos
+
+* Posibilidades a futuro
+** Evaluación de lenguaje
+#+begin_colde
+Participar en este estudio puede resultar en:
++ Dolor de cabeza 
++ Dolor de estómago
++ Pérdida del apetito
++ Calambres musculares
+#+end_colde
+
+#+begin_coliz
+La participación en este estudio puede ocasionar los siguientes efectos adversos:
++ Cefalea 
++ Dispepsia 
++ Hiprexia 
++ Mioespasmos 
+#+end_coliz
+
+** Identificación de inconsistencias
+Por ahora, nuestro sistema no identifica inconsistencias (e.g., listas de efectos secundarios inconsistentes), pero es completamente viable
+
+** Solución de dudas independiente
+Si un paciente tiene dudas, ¿a quién debe preguntarle?
+
+* Implicaciones éticas de incluir IA en procesos de evaluación
+#+begin_quote
+¿Es ético incluir IA en el campo de la bio-ética?
+#+end_quote
+
+* Implicaciones éticas de incluir IA en procesos de evaluación
+#+begin_quote
+¿Es ético *NO* incluir IA en el campo de la bio-ética?
+#+end_quote
+
+* Bibliografía
+#+print_bibliography:
+
+* ¿Preguntas?
+#+begin_coliz
+*Demo*
+#+attr_html: :height 600 
+[[file:demo.png]]
+#+end_coliz
+
+#+begin_colde
+*Presentación*
+#+attr_html: :height 600 
+[[file:enlace.png]]
+#+end_colde
+
